@@ -1,5 +1,6 @@
 from openai import OpenAI
 import streamlit as st
+import os
 
 # function to get response from model
 def getresponse(input_text,response_summary,no_words):
@@ -44,13 +45,16 @@ st.set_page_config(page_title="Email generator",
 st.header("Paul's personal email generator")
 
 # input from user
+password = st.text_input("Niki's password she gave you" )
 input_text=st.text_area("Paste the contents of the email you would like to respond to, ideally don't put in any company secrets ", height=10)
 response_summary=st.text_area("Enter a brief summary of the response you want me to write", height=5)
 no_words = st.text_input('Maximum number of words for the email you want me to write')
 
 submit = st.button("Generate")
 
-if submit:
+if password != os.getenv('APP_PASSWORD'):
+    st.warning('Wrong password', icon="⚠️")
+elif submit and password == os.getenv('APP_PASSWORD'): 
     email_response = getresponse(input_text,response_summary,no_words)
     st.header('Your response')
     st.write(email_response.choices[0].message.content)
