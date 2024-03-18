@@ -3,11 +3,12 @@ import streamlit as st
 import os
 # page config
 st.set_page_config(page_title="Plumbot",
-                   page_icon=':robot:',
+                   page_icon=':sparkles:',
                    layout='centered',
                    initial_sidebar_state='expanded')
 
-st.title("Paul's chatbot")
+st.title("Paul's chatbot :robot_face:")
+st.subheader("Ask me for my help! Examples include: \n - Write a business proposal for X \n - Proofread the following text \n - Summarise this text \n - Write a risk assessment for X \n Work smart not hard Dad ")
 
 password = st.sidebar.text_input("Niki's password she gave you" )
 
