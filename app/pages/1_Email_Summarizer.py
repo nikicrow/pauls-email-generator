@@ -41,7 +41,7 @@ st.header("Paul's personal email assistant")
 
 # input from user
 password = st.sidebar.text_input("Niki's password she gave you" )
-input_text=st.text_area("Paste the contents of the email you would like to summarise, ideally don't put in any company secrets ", height=10)
+input_text=st.text_area("Paste the contents of the email(s) you would like to summarise", height=10)
 no_words = 500
 
 submit = st.button("Summarise email")
