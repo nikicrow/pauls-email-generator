@@ -46,11 +46,11 @@ st.header("Paul's personal email assistant")
 
 # input from user
 password = st.sidebar.text_input("Niki's password she gave you" )
-input_text=st.text_area("Paste the contents of the email you would like to respond to, ideally don't put in any company secrets ", height=10)
-response_summary=st.text_area("Enter a brief summary of the response you want me to write", height=5)
+input_text=st.text_area("Paste the contents of the email(s) you would like me to respond to", height=10)
+response_summary=st.text_area("Enter a brief summary of the response you want me to write (e.g. no worries)", height=5)
 no_words = st.text_input('Maximum number of words for the email you want me to write')
 
-submit = st.button("Generate")
+submit = st.button("Generate response")
 
 if password != os.getenv('APP_PASSWORD'):
     st.warning('Wrong password', icon="⚠️")

@@ -18,7 +18,7 @@ def getresponse(input_text,no_words):
                 {input_text} 
                 ```
                 [EMAIL INPUT END]
-                Be polite, professional and concise and use a maximum of {no_words}
+                Be polite and concise and use a maximum of {no_words}
                 """
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
@@ -37,14 +37,14 @@ st.set_page_config(page_title="Email summariser",
                    layout='centered',
                    initial_sidebar_state='expanded')
 
-st.header("Paul's personal email summariser")
+st.header("Paul's personal email assistant")
 
 # input from user
 password = st.sidebar.text_input("Niki's password she gave you" )
 input_text=st.text_area("Paste the contents of the email you would like to summarise, ideally don't put in any company secrets ", height=10)
 no_words = 500
 
-submit = st.button("Generate")
+submit = st.button("Summarise email")
 
 if password != os.getenv('APP_PASSWORD'):
     st.warning('Wrong password', icon="⚠️")
