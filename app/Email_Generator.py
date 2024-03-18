@@ -42,7 +42,7 @@ st.set_page_config(page_title="Email generator",
                    layout='centered',
                    initial_sidebar_state='collapsed')
 
-st.header("Paul's personal email generator")
+st.header("Paul's personal email assistant")
 
 # input from user
 password = st.text_input("Niki's password she gave you" )
@@ -55,11 +55,12 @@ submit = st.button("Generate")
 if password != os.getenv('APP_PASSWORD'):
     st.warning('Wrong password', icon="⚠️")
 elif submit and password == os.getenv('APP_PASSWORD'): 
-    email_response = getresponse(input_text,response_summary,no_words)
-    st.header('Your response')
-    st.write(email_response.choices[0].message.content)
-    # how much is openai costing me?
-    st.subheader('How much did this cost?')
-    st.write('Prompt tokens = ',email_response.usage.prompt_tokens,' which should be about ',round(email_response.usage.prompt_tokens/1000000*50,6),'cents ($0.50 per million tokens)')
-    st.write('Completion tokens = ',email_response.usage.completion_tokens,' which should be about ',round(email_response.usage.completion_tokens/1000000*150,6),'cents ($1.50 per million tokens)')
-    st.write('Total approximate cost for this chapter = ',round(email_response.usage.prompt_tokens/1000000*50+email_response.usage.completion_tokens/1000000*150,6),' US cents')
+    with st.status('Writing your email...', expanded=True) as status:
+        email_response = getresponse(input_text,response_summary,no_words)
+        st.header('Your response')
+        st.write(email_response.choices[0].message.content)
+        # how much is openai costing me?
+        st.subheader('How much did this cost?')
+        st.write('Prompt tokens = ',email_response.usage.prompt_tokens,' which should be about ',round(email_response.usage.prompt_tokens/1000000*50,6),'cents ($0.50 per million tokens)')
+        st.write('Completion tokens = ',email_response.usage.completion_tokens,' which should be about ',round(email_response.usage.completion_tokens/1000000*150,6),'cents ($1.50 per million tokens)')
+        st.write('Total approximate cost for this chapter = ',round(email_response.usage.prompt_tokens/1000000*50+email_response.usage.completion_tokens/1000000*150,6),' US cents')
