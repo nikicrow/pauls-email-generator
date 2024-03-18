@@ -40,12 +40,12 @@ def getresponse(input_text,response_summary,no_words):
 st.set_page_config(page_title="Email generator",
                    page_icon=':email:',
                    layout='centered',
-                   initial_sidebar_state='collapsed')
+                   initial_sidebar_state='expanded')
 
 st.header("Paul's personal email assistant")
 
 # input from user
-password = st.text_input("Niki's password she gave you" )
+password = st.sidebar.text_input("Niki's password she gave you" )
 input_text=st.text_area("Paste the contents of the email you would like to respond to, ideally don't put in any company secrets ", height=10)
 response_summary=st.text_area("Enter a brief summary of the response you want me to write", height=5)
 no_words = st.text_input('Maximum number of words for the email you want me to write')
