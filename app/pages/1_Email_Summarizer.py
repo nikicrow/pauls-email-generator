@@ -35,12 +35,12 @@ def getresponse(input_text,no_words):
 st.set_page_config(page_title="Email summariser",
                    page_icon=':email:',
                    layout='centered',
-                   initial_sidebar_state='collapsed')
+                   initial_sidebar_state='expanded')
 
 st.header("Paul's personal email summariser")
 
 # input from user
-password = st.text_input("Niki's password she gave you" )
+password = st.sidebar.text_input("Niki's password she gave you" )
 input_text=st.text_area("Paste the contents of the email you would like to summarise, ideally don't put in any company secrets ", height=10)
 no_words = 500
 
