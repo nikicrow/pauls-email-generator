@@ -7,7 +7,7 @@ st.set_page_config(page_title="Plumbot",
                    layout='centered',
                    initial_sidebar_state='expanded')
 
-st.title("Paul's chatbot :robot_face:")
+st.title("Plumbot :robot_face:")
 st.subheader("Ask me for my help! Examples include: \n - Write a business proposal for X \n - Proofread the following text \n - Summarise this text \n - Write a risk assessment for X \n Work smart not hard Dad ")
 
 password = st.sidebar.text_input("Niki's password she gave you" )
