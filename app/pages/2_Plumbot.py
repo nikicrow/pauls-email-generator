@@ -15,7 +15,7 @@ st.write("Work smart not hard Dad!")
 
 password = st.sidebar.text_input("Niki's password she gave you" )
 
-if password == os.getenv('APP_PASSWORD'):
+if password == st.secrets['APP_PASSWORD']:
     client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
     if "openai_model" not in st.session_state:
@@ -32,16 +32,6 @@ if password == os.getenv('APP_PASSWORD'):
                 Your name is Plumbot, introduce yourself at the beginning of a conversation.
                 """
             })
-        # st.session_state.messages.append(   
-        #     {
-        #         "role": "user",
-        #         "content": ""
-        #     })
-        # st.session_state.messages.append(
-        #     {
-        #         "role": "assistant",
-        #         "content": ""
-        #     })
 
     for message in st.session_state.messages:
         if message["role"] in ["user", "assistant"]:
@@ -64,3 +54,6 @@ if password == os.getenv('APP_PASSWORD'):
             )
             response = st.write_stream(stream)
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+else:
+    st.warning('Check password', icon="⚠️")

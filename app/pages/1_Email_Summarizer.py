@@ -46,9 +46,9 @@ no_words = 500
 
 submit = st.button("Summarise email")
 
-if password != os.getenv('APP_PASSWORD'):
-    st.warning('Wrong password', icon="⚠️")
-elif submit and password == os.getenv('APP_PASSWORD'): 
+if password != st.secrets['APP_PASSWORD']:
+    st.warning('Check password', icon="⚠️")
+elif submit and password == st.secrets['APP_PASSWORD']: 
     with st.status('Summarising your email...', expanded=True) as status:
         email_response = getresponse(input_text,no_words)
         st.header('Your response')

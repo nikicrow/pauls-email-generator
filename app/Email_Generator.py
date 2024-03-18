@@ -52,9 +52,9 @@ no_words = st.text_input('Maximum number of words for the email you want me to w
 
 submit = st.button("Generate response")
 
-if password != os.getenv('APP_PASSWORD'):
-    st.warning('Wrong password', icon="⚠️")
-elif submit and password == os.getenv('APP_PASSWORD'): 
+if password != st.secrets['APP_PASSWORD']:
+    st.warning('Check password', icon="⚠️")
+elif submit and password == st.secrets['APP_PASSWORD']: 
     with st.status('Writing your email...', expanded=True) as status:
         email_response = getresponse(input_text,response_summary,no_words)
         st.header('Your response')
